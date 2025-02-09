@@ -1,6 +1,6 @@
 let pokemonRepository = (function () {
     let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=300';
 
     function getAll() {
         return pokemonList;
@@ -39,7 +39,9 @@ let pokemonRepository = (function () {
             .then(details => {
                 pokemon.imageUrl = details.sprites.front_default;
                 pokemon.height = details.height;
+                pokemon.weight = details.weight;
                 pokemon.types = details.types.map(typeInfo => typeInfo.type.name).join(', ');
+                pokemon.abilities = details.abilities.map(abilityInfo => abilityInfo.ability.name).join(', ');
             })
             .catch(error => {
                 console.error("Error while loading Pokemon details", error);
@@ -57,6 +59,9 @@ let pokemonRepository = (function () {
             img.src = pokemon.imageUrl;
             img.alt = `Image of ${pokemon.name}`;
             card.appendChild(img);
+
+            let primaryType = pokemon.types.split(',')[0];
+            card.style.backgroundColor = typeColors[primaryType] || "#fff";
         });
 
         card.addEventListener('click', function() {
@@ -71,7 +76,9 @@ let pokemonRepository = (function () {
             document.getElementById('pokemon-name').innerText = pokemon.name;
             document.getElementById('pokemon-image').src = pokemon.imageUrl;
             document.getElementById('pokemon-height').innerText = `Height: ${pokemon.height}`;
+            document.getElementById('pokemon-weight').innerText = `Weight: ${pokemon.weight}`;
             document.getElementById('pokemon-types').innerText = `Types: ${pokemon.types}`;
+            document.getElementById('pokemon-ability').innerText = `Abilities: ${pokemon.abilities}`;
             document.getElementById('modal').classList.add('show');
         });
     }
@@ -102,3 +109,24 @@ window.addEventListener('click', (event) => {
         modal.classList.remove('show');
     }
 });
+
+const typeColors = {
+    normal: "#b6ba91",
+    fire: "#fa9d66",
+    water: "#a8cee0",
+    electric: "#f7dc60",
+    grass: "#b4e0a8",
+    ice: "#96D9D6",
+    fighting: "#f77d79",
+    poison: "#d092de",
+    ground: "#9e8870",
+    flying: "#A98FF3",
+    psychic: "#c17ef7",
+    bug: "#abc265",
+    rock: "#a1946f",
+    ghost: "#aaa0bd",
+    dragon: "#6298fc",
+    dark: "#a3765f",
+    steel: "#B7B7CE",
+    fairy: "#ffdeeb",
+};
