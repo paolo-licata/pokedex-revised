@@ -28,7 +28,7 @@ body {
     font-size: 1.1rem;
 }
 
-.search-form {
+.search-select {
     display: flex;
     justify-self: end;
     align-items: center;
@@ -36,7 +36,7 @@ body {
 
 .search-input {
     padding: 3px 10px;
-    margin-right: 10px;
+    margin-right: 2px;
     border-radius: 5px;
     border: 1px solid #ddd;
 }
@@ -53,6 +53,13 @@ body {
 
 .search-button:hover {
     background-color: #8f0f01;
+}
+
+.search-select select {
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-left: 10px;
 }
 
 .pokemon-container {

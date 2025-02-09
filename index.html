@@ -14,10 +14,32 @@
             <img src="./img/64px-Poké_Ball_icon.svg.png" alt="pokeball" class="navbar-logo">
             <h1 class="navbar-brand">Pokedex Remastered</h1>
         </div>
-        <form class="search-form">
-            <input type="search" placeholder="Search" class="search-input">
-            <button type="submit" class="search-button">Search</button>
-        </form>
+
+        <div class="search-select">
+            <form class="search-form" id="search-form">
+                <input type="search" placeholder="Search" class="search-input" id="search-input">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+
+            <select class="type-filter" id="type-filter">
+                <option value="">Filter by type</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="grass">Grass</option>
+                <option value="electric">Electric</option>
+                <option value="bug">Bug</option>
+                <option value="normal">Normal</option>
+                <option value="fighting">Fighting</option>
+                <option value="psychic">Psychic</option>
+                <option value="ghost">Ghost</option>
+                <option value="dragon">Dragon</option>
+                <option value="dark">Dark</option>
+                <option value="fairy">Fairy</option>
+                <option value="rock">Rock</option>
+                <option value="ground">Ground</option>
+                <option value="poison">Poison</option>
+            </select>
+        </div>
     </nav>
 
     <div class="pokemon-container"></div>

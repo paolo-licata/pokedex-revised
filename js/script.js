@@ -16,6 +16,16 @@ let pokemonRepository = (function () {
         }
     }
 
+    function filterPokemons(query, type) {
+        //Filter by name
+        let filteredList = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(query.toLowerCase()));
+        //Then, filter by type if, type is selected
+        if (type) {
+            filteredList = filteredList.filter(pokemon => pokemon.types.includes(type));
+        }
+        return filteredList;
+    }
+
     function loadList() {
         return fetch(apiUrl)
             .then(response => response.json())
@@ -95,7 +105,8 @@ let pokemonRepository = (function () {
         getAll: getAll,
         add: add,
         loadList: loadList,
-        addListItem: addListItem
+        addListItem: addListItem,
+        filterPokemons: filterPokemons
     }
 })();
 
@@ -117,6 +128,32 @@ window.addEventListener('click', (event) => {
         modal.classList.remove('show');
     }
 });
+
+//Search functionality
+document.getElementById('search-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let query = document.getElementById('search-input').value;
+    let type = document.getElementById('type-filter').value;
+    let filteredPokemons = pokemonRepository.filterPokemons(query, type);
+
+    document.querySelector('.pokemon-container').innerHTML = '';
+    filteredPokemons.forEach(pokemon => {
+        pokemonRepository.addListItem(pokemon);
+    })
+})
+
+//Updates the pokemon list when type filter is changed
+document.getElementById('type-filter').addEventListener('change', (event) => {
+    let query = document.getElementById('search-input').value;
+    let type = document.getElementById('type-filter').value;
+    let filteredPokemons = pokemonRepository.filterPokemons(query, type);
+
+    document.querySelector('.pokemon-container').innerHTML = '';
+    filteredPokemons.forEach(pokemon => {
+        pokemonRepository.addListItem(pokemon);
+    })
+})
 
 const typeColors = {
     normal: "#b6ba91",
