@@ -83,6 +83,9 @@ let pokemonRepository = (function () {
             let primaryType = pokemon.types.split(',')[0];
             let modalContent = document.querySelector('.modal-content');
             modalContent.style.border = `5px solid ${typeColors[primaryType] || "#fff"}`;
+            
+            //Adds flip class to trigger animation
+            modalContent.classList.add('flip');
 
             document.getElementById('modal').classList.add('show');
         });

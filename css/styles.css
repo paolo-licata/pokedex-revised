@@ -1,15 +1,67 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f4f4;
-    text-align: center;
+    margin: 0;
+}
+
+/*Navbar Styling*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 3px 10px;
+}
+
+.navbar-title {
+    display: flex;
+}
+
+.navbar-title img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.navbar-title h1 {
+    font-size: 1.1rem;
+}
+
+.search-form {
+    display: flex;
+    justify-self: end;
+    align-items: center;
+}
+
+.search-input {
+    padding: 3px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.search-button {
+    padding: 3px 10px;
+    background-color: #e50505;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.search-button:hover {
+    background-color: #8f0f01;
 }
 
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     padding: 10px;
+    margin-top: 20px;
 }
 
 .pokemon-card {
@@ -61,6 +113,24 @@ body {
     border-radius: 10px;
     padding: 20px;
     transition: border 0.3s ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Flip Animation for modal content */
+@keyframes flipIn {
+    0% {
+        transform: rotateY(-180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.modal-content.flip {
+    animation: flipIn 0.7s forwards;
 }
 
 .modal-content img {

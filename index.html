@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/pokeball.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Pokedex 2.0</title>
+    <title>Pokedex Remastered</title>
 </head>
 <body>
-    <div class="pokemon-container"></div>
 
+    <nav class="navbar">
+        <div class="navbar-title">
+            <img src="./img/64px-Poké_Ball_icon.svg.png" alt="pokeball" class="navbar-logo">
+            <h1 class="navbar-brand">Pokedex Remastered</h1>
+        </div>
+        <form class="search-form">
+            <input type="search" placeholder="Search" class="search-input">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </nav>
+
+    <div class="pokemon-container"></div>
     <!--Modal-->
     <div class="modal" id="modal">
         <div class="modal-content">
