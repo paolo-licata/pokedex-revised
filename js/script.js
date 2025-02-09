@@ -79,6 +79,11 @@ let pokemonRepository = (function () {
             document.getElementById('pokemon-weight').innerText = `Weight: ${pokemon.weight}`;
             document.getElementById('pokemon-types').innerText = `Types: ${pokemon.types}`;
             document.getElementById('pokemon-ability').innerText = `Abilities: ${pokemon.abilities}`;
+
+            let primaryType = pokemon.types.split(',')[0];
+            let modalContent = document.querySelector('.modal-content');
+            modalContent.style.border = `5px solid ${typeColors[primaryType] || "#fff"}`;
+
             document.getElementById('modal').classList.add('show');
         });
     }
