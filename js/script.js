@@ -6,6 +6,7 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
 
+    //Add a pokemon to the list
     function add(pokemon) {
         if (typeof pokemon === 'object' && pokemon !== null &&
             'name' in pokemon &&
@@ -26,6 +27,7 @@ let pokemonRepository = (function () {
         return filteredList;
     }
 
+    //Load the list of pokemons from the API
     function loadList() {
         return fetch(apiUrl)
             .then(response => response.json())
@@ -43,6 +45,7 @@ let pokemonRepository = (function () {
         });
     }
 
+    //Load the details of a pokemon
     function loadDetails(pokemon) {
         return fetch(pokemon.detailsUrl)
             .then(response => response.json())
@@ -58,6 +61,7 @@ let pokemonRepository = (function () {
              })
     }
 
+    // Create a list item for each pokemon
     function addListItem(pokemon) {
         let container = document.querySelector('.pokemon-container');
         let card = document.createElement('button');
@@ -81,6 +85,7 @@ let pokemonRepository = (function () {
         container.appendChild(card);
     }
 
+    // Show the details of a specific pokemon
     function showDetails(pokemon) {
         loadDetails(pokemon).then(() => {
             document.getElementById('pokemon-name').innerText = pokemon.name;
@@ -155,6 +160,7 @@ document.getElementById('type-filter').addEventListener('change', (event) => {
     })
 })
 
+// Colors for each type used for the card background and modal border
 const typeColors = {
     normal: "#b6ba91",
     fire: "#fa9d66",
